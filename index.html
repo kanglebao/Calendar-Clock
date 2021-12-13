@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Calendar Clock</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+</head>
+<style>
+	#parent{
+		background-image:url("image/exported/Jan.png");
+		width:1300px;
+		height:500px;
+	}	
+	.clock{
+		font-family: 'Orbitron', sans-serif;
+		Width:100px;
+		height:100px;
+			display: flex;
+  		justify-content: center;
+  		align-items: center;
+		border: 3px solid #BD090C;
+		font-size: 45px;
+		background-color: black;
+		border-radius: 25px;
+		color:#42FF51;
+	}
+	#Hour{
+	position: relative;
+		left: 25px;
+		top: 25px;
+	}
+	#Minute{
+	position: relative;
+		left:150px;
+		top: -80px;
+		}
+	#Second{
+	position: relative;
+		left:275px;
+		top: -185px;
+	}
+	#clockface{
+	position:relative;
+		width: 409px;
+		height:156px;
+		background-color:white;
+		border-radius: 25px;
+		border: 3px solid #000000;
+	}
+	.clockfaceclass{
+		position:relative;
+		left:700px;
+		top:100px;
+	}
+	#Weekday{
+		font-family: 'Orbitron', sans-serif;
+		position: relative;
+		left:700px;
+		top: 101px;
+		font-size: 75px;
+	}
+	#Month{
+		font-family: 'Orbitron', sans-serif;
+		position: relative;
+		left:700px;
+		top: 81px;
+		font-size: 55px;
+	}
+	#Day{
+		font-family: 'Orbitron', sans-serif;
+		position: relative;
+		left:1030px;
+		top: 13px;
+		font-size: 55px;
+	}
+	#Year{
+		font-family: 'Orbitron', sans-serif;
+		position: relative;
+		left:1130px;
+		top: -300px;
+		font-size: 63px;
+		writing-mode: vertical-rl;
+  		text-orientation: upright;
+	}
+</style>
+<body>
+<div id="parent">
+	<div id="clockface" class="clockfaceclass">
+<div id="Hour" class="clock"></div>
+<div id="Minute" class="clock"></div>
+<div id="Second" class="clock"></div>
+	</div>
+<div id="Weekday"></div>
+<div id="Month"></div>
+<div id="Day"></div>
+<div id="Year" class="yearclass"></div>
+	
+</div>
+<script>
+var myVar = setInterval(myTimer, 1000);
+
+function myTimer() {
+var d = new Date();
+	function addZero(i) {
+  if (i < 10) {i = "0" + i}
+  return i;
+	}
+	function changeHour(i){
+		if (i > 12){i=i - 12}
+		return i;
+	}
+var h = changeHour(d.getHours());
+	document.getElementById("Hour").innerHTML = h;
+var m = addZero(d.getMinutes());
+	document.getElementById("Minute").innerHTML = m;
+var s = addZero(d.getSeconds());
+	document.getElementById("Second").innerHTML = s;
+	
+	
+const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+let day = weekday[d.getDay()];
+	document.getElementById("Weekday").innerHTML = day;
+
+const thang = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+let monthh = thang[d.getMonth()];
+	document.getElementById("Month").innerHTML = monthh;
+	
+var dnum = d.getDate();
+	document.getElementById("Day").innerHTML = dnum;
+
+var year = d.getFullYear();
+	document.getElementById("Year").innerHTML = year;
+
+if(monthh=="February"){
+	document.getElementById('parent').style.backgroundImage="url('image/exported/Feb.png')";
+}
+	else if (monthh=="March"){
+		document.getElementById('parent').style.backgroundImage="url('image/exported/Mar.png')";
+	}
+	else if (monthh=="April"){
+		document.getElementById('parent').style.backgroundImage="url('image/exported/April.png')";
+	}
+	else if (monthh=="May"){
+		document.getElementById('parent').style.backgroundImage="url('image/exported/May.png')";
+	}
+	else if (monthh=="June"){
+		document.getElementById('parent').style.backgroundImage="url('image/exported/June.png')";
+	}
+	else if (monthh=="July"){
+		document.getElementById('parent').style.backgroundImage="url('image/exported/July.png')";
+	}
+	else if (monthh=="August"){
+		document.getElementById('parent').style.backgroundImage="url('image/exported/August.png')";
+	}
+	else if (monthh=="September"){
+		document.getElementById('parent').style.backgroundImage="url('image/exported/Sep.png')";
+	}
+	else if (monthh=="October"){
+		document.getElementById('parent').style.backgroundImage="url('image/exported/Oct.png')";
+	}
+	else if (monthh=="November"){
+		document.getElementById('parent').style.backgroundImage="url('image/exported/Nov.png')";
+	}
+	else if (monthh=="December"){
+		document.getElementById('parent').style.backgroundImage="url('image/exported/Dec.png')";
+	}
+	else {document.getElementById('parent').style.backgroundImage="url('image/exported/Jan.png')";}
+}
+</script>
+</body>
+</html>
